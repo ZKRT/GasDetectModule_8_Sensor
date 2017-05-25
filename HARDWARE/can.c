@@ -133,6 +133,8 @@ uint8_t Can_Send_Msg(uint8_t* msg,uint8_t len)
 //transmit	
 	i=0;
 	mbox= CAN_Transmit(CAN, &TxMessage); 
+	GPIO_ResetBits(GPIOA, GPIO_Pin_6);
+	led_tx_count = 1;	
 	while((mbox==CAN_TxStatus_NoMailBox)&&(i<0x4FFF))
 	{
 		i++;
